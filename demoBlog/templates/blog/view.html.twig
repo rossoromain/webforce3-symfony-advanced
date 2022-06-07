@@ -15,10 +15,13 @@
 				<p>Catégorie : Politique</p>
 			</div>
 			<div class="content">
-				<img src={{article.image}} alt={{article.title}}/>
+				<img width="200" height="200" src={{article.image}} alt={{article.title}}>
 				{{ article.content | raw }}
-				<a href="{{ path('blog') }}" class="btn btn-primary">
+				<a href="{{ path('blog') }}" class="btn btn-secondary">
 					Revenir à la liste des articles
+				</a>
+				<a href="{{ path('blog_edi', {id: article.id}) }}" class="btn btn-primary">
+					Editer cet article
 				</a>
 			</div>
 		</articles>

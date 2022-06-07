@@ -49,18 +49,21 @@ class BlogController extends AbstractController
     }
 
     #[Route('/blog/add', name: 'blog_add')]
+    #[Route('/blog/edit/{id}', name: 'blog_edit')]
     // associe $article à nul si l'id n'existe pas
     // la classe request contient toutes les données véhiculées par les superglobales ($_xxxxx)
-    public function form(Request $request, EntityManagerInterface $manager): Response
+    public function form(Request $request, EntityManagerInterface $manager, Article $article = null): Response
     {
-        $article = new Article();
+        if (!$article) {
+            $article = new Article();
+            $article->setCreatedAt(new DateTime()); // set le champs createAt
+        }
 
         $form = $this->createForm(ArticleType::class, $article);
 
         $form->handleRequest($request);
 
-        if($form->isSubmitted() && $form->isValid()) { // si le formulaire est soumis et valide
-            $article->setCreatedAt(new DateTime()); // set le champs createAt
+        if($form->isSubmitted() && $form->isValid()) { // si le formulaire est soumis et valide           
             $manager->persist($article); // prépare insertion
             $manager->flush(); // insert
             return $this->redirectToRoute('blog_view', [
