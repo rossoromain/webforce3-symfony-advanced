@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{title}}
+{% endblock %}
+
+{# ceci est un commentaire #}
+
+{% block body %}
+	{% if age >= 18 %}
+		<p>Vous êtes majeur(e)</p>
+	{% else %}
+		<p>Vous êtes mineur(e)</p>
+	{% endif %}
+{% endblock %}
