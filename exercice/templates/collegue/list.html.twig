@@ -1,0 +1,23 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+	{{title}}
+{% endblock %}
+
+{% block body %}
+	<section class="row articles">
+		{% for collegue in collegues %}
+			<articles class="col-md-3 mx-auto text-center border border-dark mb-3 p-3 mt-3 mr-1">
+
+				<h2>{{ collegue.firstname|capitalize }} {{ collegue.name|upper }}</h2>
+				<div class="metadata">
+					<p class="text-muted">{{ collegue.wages }}€</p>
+                    <a href="{{path('collegue_view', {id: collegue.id})}}" class="btn btn-primary"> Voir les détails </a>
+				</div>		
+
+			</articles>
+            <div class="col-md-1"></div>
+		{% endfor %}
+	</section>
+
+{% endblock %}

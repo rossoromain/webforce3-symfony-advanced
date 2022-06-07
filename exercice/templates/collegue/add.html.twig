@@ -1,0 +1,24 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+	{{title}}
+{% endblock %}
+
+{% block body %}
+
+	<section>
+
+		{{ form_start(formCollegue, {attr: {'novalidate': 'novalidate'}})}}
+		{{ form_row(formCollegue.name)}}
+		{{ form_row(formCollegue.firstname)}}
+		{{ form_row(formCollegue.wages)}}
+
+		<div class="text-center">
+			<button type="submit" class="btn btn-success" title="Envoyer le formulaire">
+				Envoyer le formulaire
+			</button>
+		</div>
+		{{ form_end(formCollegue)}}
+	</section>
+
+{% endblock %}

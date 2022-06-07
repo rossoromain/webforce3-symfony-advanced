@@ -1,0 +1,23 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+	{{title}}
+{% endblock %}
+
+{% block body %}
+	<div class="card m-5">
+		<div class="card-title m-5">
+			<h2>{{ collegue.firstname|capitalize }}
+				{{ collegue.name|upper }}</h2>
+		</div>
+		<div class="card-body m-5">
+			<p class="text-muted">{{ collegue.wages }}€</p>
+			<a href="{{path('collegue_edit', {id: collegue.id})}}" class="btn btn-primary">
+				Editer ce collègue
+			</a>
+			<a href="{{path('collegue_list')}}" class="btn btn-secondary">
+				Retour à l'accueil
+			</a>
+		</div>
+	</div>
+{% endblock %}
