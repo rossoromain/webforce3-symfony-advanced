@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\ArticleRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: ArticleRepository::class)]
 class Article
@@ -14,15 +15,39 @@ class Article
     private $id;
 
     #[ORM\Column(type: 'string', length: 255)]
+    #[Assert\Length(
+        min: 10,
+        max: 255,
+        minMessage: 'Votre titre doit contenir au minimum 10 caractères.',
+        maxMessage: 'Votre titre doit contenir au maximumu 255 caractères.',
+    )]
+    #[Assert\NotNull(
+        message: 'Veuillez indiquer un titre.',
+    )]
     private $title;
 
+    #[Assert\Length(        
+        max: 255,        
+        maxMessage: 'Votre titre doit contenir au maximumu 255 caractères.',
+    )]
+    #[Assert\NotNull(
+        message: 'Veuillez indiquer un contenu.',
+    )]
     #[ORM\Column(type: 'text')]
     private $content;
 
+    #[Assert\Length(        
+        max: 255,        
+        maxMessage: 'Votre titre doit contenir au maximumu 255 caractères.',
+    )]
+    #[Assert\NotNull(
+        message: 'Veuillez indiquer un url d\'image.',
+    )]
     #[ORM\Column(type: 'string', length: 255)]
     private $image;
 
     #[ORM\Column(type: 'datetime')]
+    #[Assert\DateTime]
     private $createdAt;
 
     public function getId(): ?int

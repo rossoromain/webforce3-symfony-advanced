@@ -1,0 +1,34 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+	Ajouter un article
+{% endblock %}
+{% block body %}
+	<h1 class="display-1 text-center my-2">
+		Création d'un nouvel article
+	</h1>
+
+
+	{{ form_start(formArticle, {attr: {'novalidate': 'novalidate'}}) }}
+
+	{{ form_label(formArticle.title) }}
+	{{ form_widget(formArticle.title) }}
+	{{ form_errors(formArticle.title) }}
+	{# <=> {{form_row(formArticle.title)}} #}
+
+	{{ form_row(formArticle.content) }}
+
+	{{ form_row(formArticle.image, {
+            label: "URL de l'image de l'article (override du front) :",
+            attr: {
+                placeholder: "Exemple : Mon lien (override du front)"
+            }
+        }) }}
+	<div class="text-center mt-4">
+		<button type="submit" class="btn btn-success">Envoyer le formulaire</button>
+	</div>
+
+	{{ form_end(formArticle) }}
+
+
+{% endblock %}

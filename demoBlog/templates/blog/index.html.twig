@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+{% block title %}Liste des articles
+{% endblock
+%}
+{% block body %}
+	<section class="row articles">
+		{% for art in articles %}
+			<articles class="col-md-3 mx-auto text-center border border-dark mb-3 p-3 mt-3 mr-1">
+
+				<h2>{{ art.title }}</h2>
+				<div class="metadata">
+					<p>{{art.createdAt | date("d-m-Y - H:m:s")}} </br>
+						Catégorie : Politique</p>
+				</div>
+				<div class="content">
+					<img src={{art.image}} alt={{art.title}}/>
+					<p class="text-muted">{{ art.content | raw }}</p>
+					<a href="{{ path('blog_view', {id: art.id}) }}" class="btn btn-primary">Lire la suite</a>
+				</div>
+
+			</articles>
+            <div class="col-md-1"></div>
+		{% endfor %}
+	</section>
+
+{% endblock %}

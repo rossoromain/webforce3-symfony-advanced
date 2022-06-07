@@ -1,0 +1,11 @@
+{% extends "base.html.twig" %}
+
+{% block title %} 404 Not Found ... {% endblock %}
+
+{% block body %}
+	<div class="container-fluid m-5 py-5 px-4 border">
+		<h1 class="display-5 fw-bold">Article non trouvé</h1>
+		<p class="col-md-4 fs-4">Il semblerait que l'article n'existe pas ...</p>
+		<a href="{{ path('blog') }}">Cliquez ici pour retourner à l'accueil</a>
+	</div>
+{% endblock %}
